@@ -1,0 +1,31 @@
+<div>
+  <h2>People List</h2>
+
+  <div *ngIf="editingPerson">
+    <h3>Edit Person</h3>
+    <input [(ngModel)]="editingPerson.name" placeholder="Name" />
+    <input [(ngModel)]="editingPerson.age" type="number" placeholder="Age" />
+    <input [(ngModel)]="editingPerson.gender" placeholder="Gender" />
+    <input [(ngModel)]="editingPerson.mobile" placeholder="Mobile" />
+    <button (click)="savePerson()">Save</button>
+    <button (click)="cancelEdit()">Cancel</button>
+  </div>
+
+  <div>
+    <h3>Add New Person</h3>
+    <input [(ngModel)]="newPerson.name" placeholder="Name" />
+    <input [(ngModel)]="newPerson.age" type="number" placeholder="Age" />
+    <input [(ngModel)]="newPerson.gender" placeholder="Gender" />
+    <input [(ngModel)]="newPerson.mobile" placeholder="Mobile" />
+    <button (click)="addPerson(newPerson)">Add</button>
+  </div>
+
+  <ul>
+    <li *ngFor="let person of people">
+      <span>{{ person.name }} ({{ person.age }} years old, {{ person.gender }}, {{ person.mobile }})</span>
+      <button (click)="editPerson(person)">Edit</button>
+      <button (click)="deletePerson(person.mobile)">Delete</button>
+    </li>
+  </ul>
+</div>
+
